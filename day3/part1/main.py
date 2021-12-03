@@ -16,8 +16,11 @@ epsilon=0;
 values = np.array([[int(i) for i in line.strip()] for line in f]);
 
 #On transpose la matrice afin d'avoir le contenu de chaque colonne par ligne
-mostCommonBits = list(map(mostCommon, np.transpose(values)));
-leastCommonBits = list(map(leastCommon, np.transpose(values)));
+transposed = np.transpose(values)
+
+#On cherche les plus/moins communs
+mostCommonBits = list(map(mostCommon, transposed));
+leastCommonBits = list(map(leastCommon, transposed));
 
 #On transforme le résultat en bin puis en décimal
 for i in range(0,len(mostCommonBits)):
