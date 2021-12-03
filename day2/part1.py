@@ -10,7 +10,7 @@ def intrepret_command( command :str, value:int):
         depth -= value;
 
 
-f = open("data.txt","r");
+f = open("input/data.txt","r");
 depth = 0;
 horizontal = 0;
 

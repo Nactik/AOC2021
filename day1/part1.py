@@ -1,4 +1,4 @@
-f = open('data.txt','r')
+f = open('input/data.txt','r')
 previous_line = None
 count = 0
 

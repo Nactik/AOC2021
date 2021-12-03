@@ -1,6 +1,6 @@
 from functools import reduce
 
-f = open('data.txt','r')
+f = open('input/data.txt','r')
 output = 0
 count1 = 0
 count2 = 0

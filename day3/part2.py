@@ -8,7 +8,7 @@ def leastCommon(element):
     return 0 if np.count_nonzero(element) >= len(element)/2 else 1;
 
 
-f = open("data.txt","r");
+f = open("input/data.txt","r");
 
 oxygen=0;
 co2=0;
