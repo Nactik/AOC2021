@@ -1,4 +1,5 @@
 from functools import reduce
+from typing import no_type_check
 import numpy as np
 from numpy.lib.function_base import digitize
 
@@ -22,8 +23,8 @@ def decriptKey(data):
     for number, element in enumerate(onlyDigit) :
         value = 0;
         if number == 0 : # C'est le chiffre un
-                decodeKey['c'] = element[0];
-                decodeKey['f'] = element[1];
+                decodeKey['c'] = element;
+                decodeKey['f'] = element;
                 for letter in element :
                     value += ord(letter)
                 digit[1] = value
@@ -45,14 +46,28 @@ def decriptKey(data):
         if number == 3 : # C'est le chiffre huit
                 for letter in element :
                     value += ord(letter)
-                
+                    if(letter != decodeKey['c'] or letter != decodeKey['f'] or letter != decodeKey['b'] or letter != decodeKey['d'] or letter != decodeKey['a']):
+                        decodeKey['e'] += letter;
+                        decodeKey['g'] += letter;
                 digit[8] = value
                 decodeKey['a'] = aDigit;
 
 
-    for number, element in enumerate(data[3,9]) :
+    reversedData = np.array(sorted(data[3:9],key=lambda element: len(element),reverse=True))
+    for number, element in enumerate(reversedData) :
         value = 0;
-        
+        print(element)
+        if (len(element) == 6) : # C'est le chiffre 6,0 ou 9
+            sixDigit = [i for i in decodeKey['c']]
+            print(sixDigit)
+            #nideDigit = [''];
+            print([i in element for i in sixDigit])
+            if np.count_nonzero([i in element for i in sixDigit]) == 1: # C'est le chiffre 6
+                for letter in element:
+                    value += ord(letter)
+                    
+                digit[6] = value
+
                 
         #if number == 1: # C'est le chiffre 7
 
